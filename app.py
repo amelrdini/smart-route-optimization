@@ -11,7 +11,7 @@ def index():
 def distance(a, b):
     return math.sqrt((a['lat']-b['lat'])**2 + (a['lng']-b['lng'])**2)
 
-# 🔥 COST FUNCTION (MODEL KAMU)
+# COST FUNCTION (MODEL KAMU)
 def cost(a, b):
     jarak = distance(a, b)
 
