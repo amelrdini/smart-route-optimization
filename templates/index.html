@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Route Optimization PENS</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #2c3e50;
+        }
+
+        /* INPUT */
+        .input-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px;
+        }
+
+        input {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 150px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 8px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        /* MAIN LAYOUT */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        #map {
+            width: 60%;
+            height: 500px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .side {
+            width: 35%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+        }
+
+        td, th {
+            padding: 6px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        /* SUMMARY */
+        .summary {
+            margin: 20px auto;
+            width: 80%;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        /* LEGEND */
+        .legend {
+            text-align: center;
+            margin-top: 10px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🚐 Smart Route Optimization System Sistem -Layanan Antar-Jemput Mahasiswa PENS</h1>
+
+<!-- INPUT -->
+<div class="input-box">
+    <input id="lat" placeholder="Latitude">
+    <input id="lng" placeholder="Longitude">
+    <input id="bbm" placeholder="BBM (0-100)">
+    <input id="macet" placeholder="Kemacetan (0-100)">
+    <input id="risiko" placeholder="Risiko (0-100)">
+    <button onclick="addPoint()">Tambah</button>
+    <button onclick="sendData()">Proses</button>
+</div>
+
+<div class="legend">
+    🔴 Baseline | 🔵 Optimasi
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+    <!-- MAP -->
+    <div id="map"></div>
+
+    <!-- SIDE -->
+    <div class="side">
+
+        <div class="card">
+            <h3>Riwayat Input</h3>
+            <table>
+                <thead>
+    <tr>
+        <th>No</th>
+        <th>Lat</th>
+        <th>Lng</th>
+        <th>BBM</th>
+        <th>Kemacetan</th>
+        <th>Risiko</th>
+    </tr>
+</thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+
+        <div class="card">
+            <h3>Hasil Optimasi</h3>
+            <table>
+                <thead>
+                    <tr><th>Urutan</th><th>Lat</th><th>Lng</th></tr>
+                </thead>
+                <tbody id="optTable"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SUMMARY -->
+<div class="summary" id="summary">
+    Hasil perbandingan akan muncul di sini
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>
