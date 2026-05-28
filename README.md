@@ -39,3 +39,6 @@ Open browser:
 ```plaintext
 http://127.0.0.1:5000
 ```
+## Preview
+
+![Preview](assets/preview.png)
