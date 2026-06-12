@@ -25,7 +25,7 @@ Sistem optimasi rute berbasis Flask, Leaflet, dan OR-Tools untuk layanan antar-j
 ## Installation
 
 ```bash
-pip install -r requirements.txt
+pip install pandas
 ```
 
 ## Run Project

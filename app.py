@@ -7,7 +7,7 @@ from math import radians, sin, cos, sqrt, atan2
 app = Flask(__name__)
 
 # Load CSV sekali saat startup
-csv_path = 'supply_chain_logistic.csv'
+csv_path = 'data/supply_chain_logistic.csv'
 df = None
 
 try:
